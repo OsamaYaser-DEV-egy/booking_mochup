@@ -61,3 +61,6 @@ firestore-debug.log
 
 # Seed tooling
 tools/seed/node_modules/
+
+# Editor/agent tooling, not part of the project
+.claude/
