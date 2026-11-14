@@ -1,0 +1,21 @@
+rules_version = '2';
+
+// Security rules for the booking-mochup catalogue.
+//
+// The hotel catalogue is public reference data, so anyone may read it. Nothing
+// in the app writes to it at runtime: the catalogue is seeded by a developer
+// tool against a temporary rules window, then locked back down to these rules.
+// Any other collection is closed in both directions.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /hotels/{hotelId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
