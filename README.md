@@ -39,6 +39,24 @@ Behaviour that matters:
   states with three distinct messages.
 - A dead image URL degrades into a deliberate placeholder, never a broken glyph.
 
+### The property screen
+
+Opening a result shows the property page: photo gallery with a full-screen
+viewer, description and headline facilities, a full facilities checklist,
+per-category review bars, grouped nearby landmarks, check-in times and house
+rules, and a read-only table of the rooms on offer.
+
+**This screen is presentation only, by design.** It renders a property the
+results list hands it through the route and does not fetch, price or book
+anything — no cubit, no use case, no reservation logic. It is a plain
+`StatelessWidget`, which is the clearest signal of that intent.
+
+The consequence is deliberate and visible: the route carries the loaded
+property in `extra`, so a cold link (a shared URL, or a refresh) arrives with
+no property and the page says so and points back to the results rather than
+guessing. The stay still travels in query parameters, so the URL describes
+what is on screen.
+
 ### Responsive behaviour
 
 | Width | Layout |
@@ -217,6 +235,9 @@ keys.
 
 These are scoped out, not overlooked:
 
+- The property screen is presentation only, as described above. Its Save,
+  Share and Reserve buttons are styled but inert, and a cold link to it cannot
+  restore the property.
 - The map is a styled placeholder; no tile provider is wired up.
 - The saved-properties shortlist is in-memory — persisting it needs accounts.
 - The results list is built eagerly, which is right for five properties. A
