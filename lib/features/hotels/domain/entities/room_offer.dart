@@ -3,21 +3,24 @@ import 'package:equatable/equatable.dart';
 import 'money.dart';
 
 enum BedType {
-  single('Single bed'),
-  twin('Twin bed'),
-  double_('Double bed'),
-  queen('Queen bed'),
-  king('King bed'),
-  sofaBed('Sofa bed'),
-  bunk('Bunk bed');
+  single('single', 'Single bed'),
+  twin('twin', 'Twin bed'),
+  double_('double', 'Double bed'),
+  queen('queen', 'Queen bed'),
+  king('king', 'King bed'),
+  sofaBed('sofa_bed', 'Sofa bed'),
+  bunk('bunk', 'Bunk bed');
 
-  const BedType(this.label);
+  const BedType(this.id, this.label);
+
+  /// Stable key stored in Firestore, independent of the Dart member name.
+  final String id;
 
   final String label;
 
   static BedType? fromId(String id) {
     for (final type in BedType.values) {
-      if (type.name == id) return type;
+      if (type.id == id) return type;
     }
     return null;
   }
