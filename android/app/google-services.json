@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "78583616536",
+    "project_id": "booking-mochup",
+    "storage_bucket": "booking-mochup.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78583616536:android:96980417353ca410bb5f6d",
+        "android_client_info": {
+          "package_name": "com.example.booking_mochup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQF2l1Kp9EOubXxlv3vCDT-cQwLbfmi0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

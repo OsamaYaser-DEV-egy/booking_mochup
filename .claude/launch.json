@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-local-catalogue",
+      "runtimeExecutable": "flutter",
+      "runtimeArgs": [
+        "run",
+        "-d",
+        "web-server",
+        "--web-port=5173",
+        "--web-hostname=127.0.0.1",
+        "--dart-define=USE_LOCAL_CATALOGUE=true"
+      ],
+      "port": 5173,
+      "url": "http://127.0.0.1:5173"
+    },
+    {
+      "name": "web-firestore",
+      "runtimeExecutable": "flutter",
+      "runtimeArgs": [
+        "run",
+        "-d",
+        "web-server",
+        "--web-port=5174",
+        "--web-hostname=127.0.0.1",
+        "--dart-define=ENABLE_SEEDING=true"
+      ],
+      "port": 5174,
+      "url": "http://127.0.0.1:5174"
+    }
+  ]
+}

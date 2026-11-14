@@ -67,7 +67,7 @@ abstract final class HotelSeedCatalog {
       'Cash and all major cards accepted.',
     ],
     imageUrls: const [
-      'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1590133324192-1df305deea6b?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
