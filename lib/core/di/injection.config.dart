@@ -30,7 +30,6 @@ import '../../features/hotels/domain/repositories/hotel_repository.dart'
 import '../../features/hotels/domain/services/facet_calculator.dart' as _i260;
 import '../../features/hotels/domain/services/hotel_filter.dart' as _i479;
 import '../../features/hotels/domain/services/hotel_sorter.dart' as _i871;
-import '../../features/hotels/domain/usecases/get_hotel_details.dart' as _i692;
 import '../../features/hotels/domain/usecases/search_hotels.dart' as _i687;
 import '../../features/hotels/presentation/cubit/search_cubit.dart' as _i103;
 import 'injection.dart' as _i464;
@@ -73,9 +72,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i271.HotelRemoteDataSource>(),
         gh<_i741.HotelMapper>(),
       ),
-    );
-    gh.lazySingleton<_i692.GetHotelDetails>(
-      () => _i692.GetHotelDetails(gh<_i159.HotelRepository>()),
     );
     gh.lazySingleton<_i687.SearchHotels>(
       () => _i687.SearchHotels(

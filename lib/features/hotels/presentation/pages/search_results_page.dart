@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/config/app_config.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/responsive/breakpoints.dart';
+import '../../../../core/router/stay_context_codec.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../domain/entities/hotel.dart';
@@ -18,6 +20,7 @@ import '../widgets/results_header.dart';
 import '../widgets/search_panel.dart';
 import '../widgets/search_status_views.dart';
 import '../widgets/sort_bar.dart';
+import 'hotel_details_page.dart';
 
 /// The application's main screen: search, narrow, order, choose.
 ///
@@ -61,6 +64,22 @@ class _SearchResultsViewState extends State<_SearchResultsView> {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  /// Opens the property page, carrying the current stay in the URL so the
+  /// details screen prices exactly what the results list quoted.
+  void _openHotel(Hotel hotel, SearchState state) {
+    context.goNamed(
+      HotelDetailsPage.routeName,
+      pathParameters: {'hotelId': hotel.id},
+      queryParameters: StayContextCodec.encode(
+        dates: state.query.dates,
+        guests: state.query.guests,
+      ),
+      // The details screen renders what it is given and never fetches, so the
+      // loaded property travels with the navigation.
+      extra: hotel,
+    );
   }
 
   Future<void> _openFilterSheet(SearchCubit cubit, SearchState state) {
@@ -125,10 +144,7 @@ class _SearchResultsViewState extends State<_SearchResultsView> {
                       onShowOnMap: (hotel) => _announce(
                         '${hotel.name} — ${hotel.location.address}',
                       ),
-                      onOpenHotel: (hotel) => _announce(
-                        'The property page for ${hotel.name} is next on the '
-                        'roadmap.',
-                      ),
+                      onOpenHotel: (hotel) => _openHotel(hotel, state),
                       onOpenFilters: () => _openFilterSheet(cubit, state),
                     ),
                   ],
